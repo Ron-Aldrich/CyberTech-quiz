@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fafafa;
+            min-height: 100vh;
+            padding: 32px 20px;
+        }
+
+        .wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .top-bar {
+            background: white;
+            padding: 28px 36px;
+            border-radius: 12px;
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .user-section h1 {
+            font-size: 26px;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 6px;
+        }
+
+        .score-text {
+            font-size: 15px;
+            color: #888;
+            font-weight: 400;
+        }
+
+        .logout-link {
+            padding: 11px 24px;
+            background: #f7f7f7;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #555;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .logout-link:hover {
+            background: #ebebeb;
+            border-color: #d0d0d0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+        }
+
+        .box {
+            background: white;
+            padding: 36px 28px;
+            border-radius: 12px;
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+            text-align: center;
+        }
+
+        .box h3 {
+            font-size: 13px;
+            font-weight: 600;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .box-link {
+            display: inline-block;
+            padding: 13px 28px;
+            background: #f5f5f5;
+            color: #555;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            margin-top: 12px;
+        }
+
+        .box-link:hover {
+            background: #222;
+            color: white;
+            border-color: #222;
+        }
+
+        .box-link:active {
+            transform: translateY(1px);
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 20px 16px;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                padding: 24px 28px;
+                text-align: center;
+            }
+
+            .user-section h1 {
+                font-size: 24px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .box {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="top-bar">
+            <div class="user-section">
+                <h1>{{name}}</h1>
+                <p class="score-text">Current Score: {{score}}</p>
+            </div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <a href="{{url_for('rank')}}" class="logout-link">View Rankings</a>
+                <a href="{{url_for('logout')}}" class="logout-link">Logout</a>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="box">
+                <h3>Quiz Section 1</h3>
+                <a href="{{url_for('quiz1')}}" class="box-link">Take Quiz 1</a>
+            </div>
+
+            <div class="box">
+                <h3>Quiz Section 2</h3>
+                <a href="{{url_for('quiz2')}}" class="box-link">Take Quiz 2</a>
+            </div>
+
+            <div class="box">
+                <h3>Quiz Section 3</h3>
+                <a href="{{url_for('quiz3')}}" class="box-link">Take Quiz 3</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

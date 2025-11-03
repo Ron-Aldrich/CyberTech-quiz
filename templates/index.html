@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - CyberronQuiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 380px;
+            padding: 48px 40px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .google-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 12px 24px;
+            background: #ffffff;
+            border: 1px solid #dadce0;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #3c4043;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .google-btn:hover {
+            background: #f8f9fa;
+            border-color: #c6c6c6;
+        }
+
+        .google-btn img {
+            width: 18px;
+            height: 18px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 28px 0;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .divider span {
+            padding: 0 16px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #1a1a1a;
+            transition: all 0.2s ease;
+            background: #ffffff;
+        }
+
+        .form-group input::placeholder {
+            color: #9ca3af;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+
+        .btn-secondary {
+            background: #ffffff;
+            color: #374151;
+            border: 1px solid #d1d5db;
+        }
+
+        .btn-secondary:hover {
+            background: #f9fafb;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 32px;
+            color: #9ca3af;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <h1>CyberronQuiz</h1>
+        </div>
+        
+        <p class="subtitle">Sign in to your account</p>
+        
+        <a href="{{ url_for('login') }}" class="google-btn">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
+            Continue with Google
+        </a>
+        
+        <div class="divider">
+            <span>or</span>
+        </div>
+        
+        <form method="post">
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+            
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+            
+            <div class="button-group">
+                <button type="submit" name="action" value="Login" class="btn btn-primary">
+                    Sign In
+                </button>
+                <button type="submit" name="action" value="Sign Up" class="btn btn-secondary">
+                    Sign Up
+                </button>
+                <br>
+            </div>
+            
+
+        </form>
+
+         <script>
+        // Detect in-app browsers like Facebook, Messenger, Instagram
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
+        if (ua.includes("FBAN") || ua.includes("FBAV") || ua.includes("Instagram")) {
+            document.body.innerHTML = `
+                <div class="warning-box">
+                    <h2>⚠️ Google Login not supported here</h2>
+                    <p>Please open this site in <b>Chrome</b> or <b>Safari</b> to continue with Google Login.</p>
+                    <p>In Messenger or Instagram, tap the <b>three dots</b> → <b>“Open in browser”</b>.</p>
+                </div>
+            `;
+        }
+    </script>
+        
+        <div class="footer">
+            © 2025 CyberronQuiz
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fafafa;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 600;
+            color: #222;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .quiz-box {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .question {
+            margin-bottom: 32px;
+        }
+
+        .question p {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 16px;
+        }
+
+        .question label {
+            display: block;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 15px;
+            color: #555;
+        }
+
+        .question label:hover {
+            background: #fafafa;
+            border-color: #d0d0d0;
+        }
+
+        .question input[type="radio"] {
+            margin-right: 12px;
+            cursor: pointer;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        button, .back-link {
+            flex: 1;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+        }
+
+        button {
+            background: #222;
+            color: white;
+            border: 1px solid #222;
+        }
+
+        button:hover {
+            background: #000;
+            border-color: #000;
+        }
+
+        .back-link {
+            background: #f5f5f5;
+            color: #555;
+            border: 1px solid #e0e0e0;
+        }
+
+        .back-link:hover {
+            background: #ebebeb;
+            border-color: #d0d0d0;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 24px 16px;
+            }
+
+            h1 {
+                font-size: 28px;
+                margin-bottom: 32px;
+            }
+
+            .quiz-box {
+                padding: 32px 24px;
+            }
+
+            .question p {
+                font-size: 15px;
+            }
+
+            .question label {
+                padding: 10px 14px;
+                font-size: 14px;
+            }
+
+            .actions {
+                flex-direction: column-reverse;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QUIZ 2</h1>
+        
+        <div class="quiz-box">
+            <h2>Medium Quiz</h2>
+            
+            <form method="post">
+                <div class="question">
+                    <p>1. What does RAM stand for?</p>
+                    <label>
+                        <input type="radio" name="quiz1" value="A" required>
+                        <span>Random Access Memory</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="quiz1" value="B" required>
+                        <span>Read Access Memory</span>
+                    </label>
+                </div>
+
+                <div class="question">
+                    <p>2. Which of the following is an example of an operating system?</p>
+                    <label>
+                        <input type="radio" name="quiz2" value="A" required>
+                        <span>Windows</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="quiz2" value="B" required>
+                        <span>Google Chrome</span>
+                    </label>
+                </div>
+
+                <div class="question">
+                    <p>3. What does URL stand for?</p>
+                    <label>
+                        <input type="radio" name="quiz3" value="A" required>
+                        <span>Uniform Resource Locator</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="quiz3" value="B" required>
+                        <span>Universal Reference Link</span>
+                    </label>
+                </div>
+
+                <div class="question">
+                    <p>4. What type of software is used to protect a computer from viruses?</p>
+                    <label>
+                        <input type="radio" name="quiz4" value="A" required>
+                        <span>Antivirus</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="quiz4" value="B" required>
+                        <span>Browser</span>
+                    </label>
+                </div>
+
+                <div class="question">
+                    <p>5. Which unit is used to measure computer memory size?</p>
+                    <label>
+                        <input type="radio" name="quiz5" value="A" required>
+                        <span>Bytes</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="quiz5" value="B" required>
+                        <span>Pixels</span>
+                    </label>
+                </div>
+
+                <div class="actions">
+                    <a href="{{url_for('dashboard')}}" class="back-link">← Back</a>
+                    <button type="submit">Submit Quiz</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
